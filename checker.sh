@@ -33,7 +33,7 @@ export intf=$(cat config.json | jq -r '.interfaces')
 
 # >> Looping
 while true; do
-    export bytes="$(/usr/bin/vnstat -i $intf -tr 2 --json | jq -r ".rx.bytespersecond")"
+    export bytes="$(/usr/bin/vnstat -i $intf -tr 2 --json | jq -r ".tx.bytespersecond")"
     export conmbps=$(echo $bytes | awk '{printf "%d", $1 * 8 / 1024 / 1024}')
 
     if [ "$conmbps" -gt "$limits" ]; then
