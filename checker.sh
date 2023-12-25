@@ -21,6 +21,9 @@ if [[ $(whoami) != "root" ]]; then
     exit 1
 fi
 
+# >> Go to directory
+cd /etc/ddos-notifier
+
 # >> Load configuration
 export name=$(cat config.json | jq -r '.name')
 export limits=$(cat config.json | jq -r '.bandwidth')
