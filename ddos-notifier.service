@@ -9,7 +9,7 @@ WorkingDirectory=/etc/ddos-notifier/
 ExecStart=/bin/bash checker.sh
 Restart=always
 RestartSec=3
-MemoryMax=10M
+MemoryMax=100M
 
 [Install]
 WantedBy=multi-user.target
