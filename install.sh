@@ -16,8 +16,12 @@ if [[ $(whoami) != "root" ]]; then
 fi
 
 # >> Check os command
-if ! command -V apt > /dev/null 2>&1; then
-    echo "This script only supports on debian systems"
+if command -V apt > /dev/null 2>&1; then
+    ST=apt
+elif command -V yum > /dev/null 2>&1; then
+    ST=yum
+else
+    echo "This script only supports on debian and rhel systems"
     exit 1
 fi
 

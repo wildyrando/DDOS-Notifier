@@ -16,16 +16,23 @@ if [[ $(whoami) != "root" ]]; then
 fi
 
 # >> Check os command
-if ! command -V apt > /dev/null 2>&1; then
-    echo "This script only supports on debian systems"
+if command -V apt > /dev/null 2>&1; then
+    ST=apt
+elif command -V yum > /dev/null 2>&1; then
+    ST=yum
+else
+    echo "This script only supports on debian and rhel systems"
     exit 1
 fi
 
 # >> Update repository
-apt update -y; apt upgrade -y
+$ST update -y; $ST upgrade -y
 
 # >> Install vnstat
-apt install vnstat jq -y
+if [[ $ST == "yum" ]]; then
+    yum install epel-release -y
+fi
+$ST install vnstat jq -y
 
 # >> Check vnstat installation
 if ! command -V vnstat > /dev/null 2>&1; then
