@@ -22,4 +22,22 @@ if ! command -V apt > /dev/null 2>&1; then
 fi
 
 # >> Install vnstat and requirements
-wget --no-check-certificate -O- 
+wget --no-check-certificate -O- https://raw.githubusercontent.com/wildyrando/DDOS-Notifier/main/invnstat.sh | bash
+
+# >> Create main directory
+rm -rf /etc/ddos-notifier
+mkdir -p /etc/ddos-notifier
+cd /etc/ddos-notifier
+
+# >> Download resources
+wget -O checker.sh https://raw.githubusercontent.com/wildyrando/DDOS-Notifier/main/checker.sh
+chmod 700 checker.sh
+
+# >> Download services
+wget --no-check-certificate -O /etc/systemd/system/ddos-notifier.service "https://raw.githubusercontent.com/wildyrando/DDOS-Notifier/main/ddos-notifier.service"
+
+# >> Enable services
+systemctl enable ddos-notifier
+
+# >> Done
+echo -e $"DDOS-Notifier installed successfully,\n\nPlease configure the config files in /etc/ddos-notifier/config.json\n\nand try to start the services with this command\nsystemctl start ddos-notifier"
