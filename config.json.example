@@ -1,6 +1,8 @@
 {
+    "name": "",
     "bottoken": "",
     "teleid": "",
     "interfaces": "",
-    "bandwidth": ""
+    "bandwidth": "",
+    "interval": ""
 }

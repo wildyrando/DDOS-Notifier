@@ -1,0 +1,15 @@
+[Unit]
+Description=DDOS-Notifier
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/etc/ddos-notifier/
+ExecStart=/bin/bash checker.sh
+Restart=always
+RestartSec=3
+MemoryMax=10M
+
+[Install]
+WantedBy=multi-user.target
