@@ -30,6 +30,7 @@ mkdir -p /etc/ddos-notifier
 cd /etc/ddos-notifier
 
 # >> Download resources
+wget -O config.json.example https://raw.githubusercontent.com/wildyrando/DDOS-Notifier/main/config.json.example
 wget -O checker.sh https://raw.githubusercontent.com/wildyrando/DDOS-Notifier/main/checker.sh
 chmod 700 checker.sh
 
@@ -40,4 +41,4 @@ wget --no-check-certificate -O /etc/systemd/system/ddos-notifier.service "https:
 systemctl enable ddos-notifier
 
 # >> Done
-echo -e $"DDOS-Notifier installed successfully,\n\nPlease configure the config files in /etc/ddos-notifier/config.json\n\nand try to start the services with this command\nsystemctl start ddos-notifier"
+clear && echo -e $"DDOS-Notifier installed successfully,\n\nPlease configure the config files in /etc/ddos-notifier/config.json\n\nand try to start the services with this command\nsystemctl start ddos-notifier"
