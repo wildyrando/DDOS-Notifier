@@ -1,5 +1,5 @@
 # DDOS-Notifier
-## This bash script detects possible DDOS attacks and sends notifications if supspicious activity is detected.
+This bash script detects possible DDOS attacks and sends notifications if supspicious activity is detected.
 
 # Installations
 ```bash
